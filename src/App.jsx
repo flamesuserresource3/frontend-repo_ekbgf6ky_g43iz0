@@ -1,28 +1,34 @@
-import { useState } from 'react'
+import { useEffect } from 'react';
+import Hero from './components/Hero';
+import Projects from './components/Projects';
+import Experience from './components/Experience';
+import AboutContact from './components/AboutContact';
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  useEffect(() => {
+    // Smooth scroll behavior for in-page navigation and the overall cinematic feel
+    if ('scrollBehavior' in document.documentElement.style) return;
+    // Fallback could be added if needed; modern browsers support smooth behavior.
+  }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
-        </div>
-      </div>
-    </div>
-  )
-}
+    <div className="min-h-screen w-full bg-gradient-to-b from-black via-slate-900 to-black font-['Inter',_system-ui]">
+      {/* HERO / TITLE */}
+      <Hero />
 
-export default App
+      {/* PROJECTS */}
+      <Projects />
+
+      {/* EXPERIENCE */}
+      <Experience />
+
+      {/* ABOUT & CONTACT */}
+      <AboutContact />
+
+      {/* Footer */}
+      <footer className="border-t border-white/10 py-8 text-center text-xs text-white/60">
+        <p>© {new Date().getFullYear()} Abhishek Brahmbhatt · Built with a dark cinematic vibe</p>
+      </footer>
+    </div>
+  );
+}
